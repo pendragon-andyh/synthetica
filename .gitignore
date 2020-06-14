@@ -1,6 +1,6 @@
 _site
 .sass-cache
 .jekyll-metadata
+.eslintcache
 Gemfile.lock
 node_modules
-dist
