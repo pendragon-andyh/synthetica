@@ -1,0 +1,57 @@
+{
+  "name": "synthetica",
+  "version": "0.1.0",
+  "description": "Web Audio modules for emulating classic synths",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "deploy:gh": "gh-pages --dist .",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pendragon-andyh/synthetica.git"
+  },
+  "keywords": [
+    "WebAudio"
+  ],
+  "author": "Andy Harman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pendragon-andyh/synthetica/issues"
+  },
+  "homepage": "https://github.com/pendragon-andyh/synthetica#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "gh-pages": "^3.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.10",
+    "prettier": "^2.0.5",
+    "source-map-loader": "^1.0.0",
+    "terser-webpack-plugin": "^3.0.4",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "webpack": "^5.0.0-beta.17",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  }
+}

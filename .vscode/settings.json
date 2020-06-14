@@ -1,0 +1,9 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "javascript.format.semicolons": "remove",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
+}
