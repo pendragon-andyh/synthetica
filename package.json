@@ -9,7 +9,8 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run clean && copy-files-from-to && rollup -c",
+    "clean": "rimraf dist assets/vendor",
     "watch": "rollup -cw",
     "deploy:gh": "gh-pages --dist .",
     "lint": "eslint ./src",
@@ -29,13 +30,11 @@
     "url": "https://github.com/pendragon-andyh/synthetica/issues"
   },
   "homepage": "https://github.com/pendragon-andyh/synthetica#readme",
-  "peerDependencies": {
-    "acorn": "^7.0.0"
-  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",
     "acorn": "^7.3.1",
+    "copy-files-from-to": "^2.3.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
@@ -43,6 +42,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.10",
     "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
     "rollup": "^2.16.1",
     "rollup-plugin-typescript2": "^0.27.1",
     "typescript": "^3.9.5"
@@ -50,12 +50,19 @@
   "dependencies": {
     "jquery": "^3.5.1"
   },
+  "copyFiles": [
+    {
+      "from": "node_modules/jquery/dist/jquery.slim.min.*",
+      "to": "assets/vendor/jquery/"
+    }
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.js": "eslint --fix"
+    "*.js": "eslint --fix -ext js ./src",
+    "*.ts": "eslint --fix -ext ts ./src"
   }
 }
