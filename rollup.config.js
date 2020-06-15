@@ -1,4 +1,5 @@
 import typescript from 'rollup-plugin-typescript2'
+import image from 'rollup-plugin-img'
 import pkg from './package.json'
 
 export default [
@@ -32,6 +33,12 @@ export default [
       },
     ],
     external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
-    plugins: [typescript({ target: 'es6' })],
+    plugins: [
+      typescript({ target: 'es6' }),
+      image({
+        extensions: /\.(png|jpg|jpeg|gif|svg|js)$/,
+        limit: 10000,
+      }),
+    ],
   },
 ]

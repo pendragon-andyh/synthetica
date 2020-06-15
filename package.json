@@ -10,11 +10,12 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run clean && copy-files-from-to && rollup -c",
+    "serve": "npm run build && serve",
     "clean": "rimraf dist assets/vendor",
     "watch": "rollup -cw",
     "deploy:gh": "gh-pages --dist .",
     "lint": "eslint ./src",
-    "lint:fix": "eslint --fix ./src",
+    "lint:fix": "eslint ./src --fix --ext ts --ext js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -39,12 +40,12 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
     "gh-pages": "^3.0.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.10",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.16.1",
+    "rollup-plugin-img": "^1.1.0",
     "rollup-plugin-typescript2": "^0.27.1",
+    "serve": "^11.3.2",
     "typescript": "^3.9.5"
   },
   "dependencies": {
@@ -55,14 +56,5 @@
       "from": "node_modules/jquery/dist/jquery.slim.min.*",
       "to": "assets/vendor/jquery/"
     }
-  ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --fix -ext js ./src",
-    "*.ts": "eslint --fix -ext ts ./src"
-  }
+  ]
 }
