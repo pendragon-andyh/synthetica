@@ -9,9 +9,10 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "npm run clean && copy-files-from-to && rollup -c",
+    "setup": "npm install && npm run build",
+    "build": "npm run clean && rollup -c",
     "serve": "npm run build && serve",
-    "clean": "rimraf dist assets/vendor",
+    "clean": "rimraf dist",
     "watch": "rollup -cw",
     "deploy:gh": "gh-pages --dist .",
     "lint": "eslint ./src",
@@ -35,7 +36,6 @@
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",
     "acorn": "^7.3.1",
-    "copy-files-from-to": "^2.3.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
@@ -48,13 +48,5 @@
     "serve": "^11.3.2",
     "typescript": "^3.9.5"
   },
-  "dependencies": {
-    "jquery": "^3.5.1"
-  },
-  "copyFiles": [
-    {
-      "from": "node_modules/jquery/dist/jquery.slim.min.*",
-      "to": "assets/vendor/jquery/"
-    }
-  ]
+  "dependencies": {}
 }
